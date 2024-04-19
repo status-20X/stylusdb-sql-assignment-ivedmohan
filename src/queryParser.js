@@ -1,18 +1,18 @@
-function parseQuery(query){
-    const selectRegex = /SELECT (.+) FROM (.+)/i;
-    const match=query.match
-    (selectRegex);
+// src/queryParser.js
 
-    if(match){
-        const [,fields,table]=match;
-        return{
-            fields:fields.split(',').
-            map(field=>field.trim()),
-            table:table.trim()
+function parseQuery(query) {
+    const selectRegex = /SELECT (.+) FROM (.+)/i;
+    const match = query.match(selectRegex);
+  
+    if (match) {
+        const [, fields, table] = match;
+        return {
+            fields: fields.split(',').map(field => field.trim()),
+            table: table.trim()
         };
-    }else{
+    } else {
         throw new Error('Invalid query format');
     }
-}
-
-module.exports=parseQuery;
+  }
+  
+  module.exports = parseQuery;
