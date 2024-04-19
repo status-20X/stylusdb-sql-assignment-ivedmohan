@@ -1,19 +1,10 @@
-const { parseSelectQuery } = require('../../src/queryParser');
+const parseQuery = require('../src/queryParser');
 
 test('Parse SQL Query', () => {
-    const query = 'SELECT id, name FROM student';
-    const parsed = parseSelectQuery(query);
+    const query = 'SELECT id, name FROM sample';
+    const parsed = parseQuery(query);
     expect(parsed).toEqual({
         fields: ['id', 'name'],
-        table: 'student',
-        whereClauses: [],
-        joinCondition: null,
-        joinTable: null,
-        joinType: null,
-        groupByFields: null,
-        hasAggregateWithoutGroupBy: false,
-        "orderByFields": null,
-        "limit": null,
-        isDistinct: false
+        table: 'sample'
     });
 });
